@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose numbers</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+<p class="para">Input two numbers, choose necessary calculation and press the button:</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <label>First number:</label><br>
+    <input type="text" name="num1"/><br>
+    <label>Second number:</label><br>
+    <input type="text" name="num2"/><br>
+    <br>
+    <input type="radio" id="calc1" name="calculation" value="add">
+    <label for="add">add</label><br>
+    <input type="radio" id="calc2" name="calculation" value="subtract">
+    <label for="subtract">subtract</label><br>
+    <input type="radio" id="calc3" name="calculation" value="multiply">
+    <label for="multiply">multiply</label><br>
+    <input type="radio" id="calc4" name="calculation" value="divide">
+    <label for="divide">divide</label><br>
+    <br>
+    <input type="submit" value="Calculate"/>
+</form>
+
+{% if request.method == "POST" and not error %}
+    <p class="para">Result: {{ num1 }} {{ sign }} {{ num2 }} = {{ calc_nums }}</p>
+{% elif request.method == "POST" and error %}
+    <p class="para">{{ error }}</p>
+{% endif %}
+
+</body>
+</html>
+
