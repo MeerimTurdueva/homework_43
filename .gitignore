@@ -3,3 +3,7 @@ venv/
 .vscode/
 .DS_Store
 *.sqlite3
+source/__pycache__/
+source/hello/__pycache__/
+source/webapp/__pycache__/
+source/webapp/migrations/__pycache__/
